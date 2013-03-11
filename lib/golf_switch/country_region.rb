@@ -7,7 +7,7 @@ module GolfSwitch
     end
 
     def self.parse_region(region)
-      golfswitch_region = CountryRegion.new(region[:area_id],region[:nm])
+      golfswitch_region = CountryRegion.new(region[:id],region[:nm])
       golfswitch_region.parse_region_areas(region[:areas])
       golfswitch_region
     end

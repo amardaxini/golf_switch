@@ -6,7 +6,7 @@ module GolfSwitch
     end
 
     def self.parse_region_area(area)
-      golfswitch_area = RegionArea.new(area[:area_id],area[:nm])
+      golfswitch_area = RegionArea.new(area[:id],area[:nm])
       golfswitch_area
     end
   end

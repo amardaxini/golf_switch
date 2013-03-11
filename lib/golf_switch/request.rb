@@ -5,7 +5,7 @@ module GolfSwitch
     def make_request
 
       @config =GolfSwitch.configuration
-      @client = Savon.client({:wsdl=>"https://devxml.golfswitch.com/golfservice.asmx?WSDL",:ssl_verify_mode=>:none})
+      @client = Savon.client({:wsdl=>"https://devxml.golfswitch.com/golfservice.asmx?WSDL"})
 
       @request = @client.call(:areas) do
         message  get_authentication_header.merge(get_options)
