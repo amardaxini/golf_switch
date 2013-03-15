@@ -7,6 +7,7 @@ module GolfSwitch
       attributes.each do |name, value|
         send("#{name}=", value)
       end
+      binding.pry
       @max_distance_type = "M" unless ["M","K"].include?(@max_distance_type)
       @country_id ||="USA"
     end
@@ -14,7 +15,7 @@ module GolfSwitch
     def option_attributes
       options = {}
       options.merge!("CountryId"=>@country_id) if @country_id
-      options.merge!("RegionId"=>@regionId_id) if @region_id
+      options.merge!("RegionId"=>@region_id) if @region_id
       options.merge!("Area"=>@area) if @area
       options.merge!("Latitude"=>@latitude) if @latitude
       options.merge!("Longitude"=>@longitude) if @longitude
