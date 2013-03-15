@@ -12,7 +12,11 @@ module GolfSwitch
 
 
     def img_url(protocol="https")
-      "#{protocol}/#{img_base.to_s}/#{self.id}/#{img.to_s}"
+      if @img
+        "#{protocol}/#{img_base.to_s}/#{self.id}/#{img.to_s}"
+      else
+         ""
+      end
     end
 
 
