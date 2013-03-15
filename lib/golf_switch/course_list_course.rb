@@ -12,7 +12,7 @@ module GolfSwitch
       if response_hash[:courses] && response_hash[:courses][:cl_course]
         Array(response_hash[:courses][:cl_course]).each do |course|
           begin
-            courses  << CourseListCourse.new(course)
+            courses  << CourseListCourse.new(course.merge(:img_base=>response_hash[:img_base]))
           end
         end
       end
