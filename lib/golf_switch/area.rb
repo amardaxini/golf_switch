@@ -18,7 +18,7 @@
     end
 
     def commit
-      super("area")
+      super("areas")
     end
 
     def parse_error
