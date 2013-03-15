@@ -4,7 +4,7 @@ GolfSwitch.configure do |config|
   config.partner_id=""
   config.source_cd="A"
   config.lang=""
-  config.user_ip="120.62.168.214"
+  config.user_ip="120.62.161.103"
   config.user_session_id="some_session"
   config.access_key="some_access_key"
   config.gs_source=""
