@@ -2,12 +2,14 @@
 module GolfSwitch
   class Request
     attr_accessor :client,:config,:response,:request
-    def make_request
+    def commit(method_name)
 
       @config =GolfSwitch.configuration
       @client = Savon.client({:wsdl=>"https://devxml.golfswitch.com/golfservice.asmx?WSDL"})
-
-      @request = @client.call(:areas) do
+      # Available Operations
+#     [:areas,:course_list,:course_info,:course_avail_list,:course_avail,:book_golf,
+#      :get_golf_booking,:cancel_golf, :get_alt_rate_types,:get_course_policies]
+      @request = @client.call(method_name.to_sym) do
         message  get_authentication_header.merge(get_options)
       end
       @response = @request.body
@@ -31,13 +33,15 @@ module GolfSwitch
         }
       }
     end
-
+    def soap_fault?
+      @response.is_a?(Savon::SOAP::Fault)
+    end
     def error?
-      parse_response[:ret_cd].to_i != 0
+      parse_error[:ret_cd].to_i != 0
     end
 
     def error_message
-      parse_response[:ret_msg].to_i != 0 if error?
+      parse_error[:ret_msg]
     end
 
   end

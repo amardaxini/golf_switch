@@ -9,6 +9,7 @@ module GolfSwitch
 
     def self.parse_areas(response_hash)
       areas = AreaResponse.new
+
       unless response_hash[:countries] && response_hash[:countries].blank?
         # Searching for single country
         if response_hash[:countries][:country] && response_hash[:countries][:country].is_a?(Hash)
