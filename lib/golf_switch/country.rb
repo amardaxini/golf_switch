@@ -12,6 +12,10 @@ module GolfSwitch
       golfswitch_country
     end
 
+    def regions
+      @country_regions
+    end
+
     def parse_regions(regions)
 
       if regions[:region] && regions[:region].is_a?(Array)

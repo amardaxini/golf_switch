@@ -12,6 +12,10 @@ module GolfSwitch
       golfswitch_region
     end
 
+    def areas
+      @region_areas
+    end
+
     def parse_region_areas(areas)
        if areas[:area] && areas[:area].is_a?(Array)
         areas[:area].each do |area|
