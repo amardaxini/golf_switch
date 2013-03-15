@@ -10,10 +10,14 @@ module GolfSwitch
       courses= []
 
       if response_hash[:courses] && response_hash[:courses][:cl_course]
-        Array(response_hash[:courses][:cl_course]).each do |course|
-          begin
-            courses  << CourseListCourse.new(course.merge(:img_base=>response_hash[:img_base]))
+        if response_hash[:courses][:cl_course].is_a?(Array)
+          response_hash[:courses][:cl_course].each do |course|
+            begin
+              courses  << CourseListCourse.new(course.merge(:img_base=>response_hash[:img_base]))
+            end
           end
+        elsif response_hash[:courses][:cl_course].is_a?(Hash)
+          courses  << CourseListCourse.new(response_hash[:courses][:cl_course].merge(:img_base=>response_hash[:img_base]))
         end
       end
       courses
