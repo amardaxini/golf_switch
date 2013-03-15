@@ -7,7 +7,6 @@ module GolfSwitch
       attributes.each do |name, value|
         send("#{name}=", value)
       end
-      binding.pry
       @max_distance_type = "M" unless ["M","K"].include?(@max_distance_type)
       @country_id ||="USA"
     end
