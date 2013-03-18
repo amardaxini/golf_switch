@@ -9,7 +9,7 @@ GolfSwitch.configure do |config|
   config.access_key="some_access_key"
   config.gs_source=""
 end
-course_list = GolfSwitch::CourseList.new({:country_id=>"USA",:region_id=>"AZ"})
+course_list = GolfSwitch::CourseList.new({:country_id=>"USA",:region_id=>"WI",:area=>"Northern Wisconsin"})
 course_list.commit
 course_list.parse_response
 binding.pry
