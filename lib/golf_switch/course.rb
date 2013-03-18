@@ -1,6 +1,10 @@
+
 module GolfSwitch
   class Course
-    attr_accessor :id,:xid,:on_req,:nm,:cty,:st,:cou,:s_cou,:s_reg,:s_ar,:lat,:lon,:adv_days,:inside_days,:dist,:promo,:ratin,:img,:img_base
+    attr_accessor :id,:xid,:on_req,:nm,:cty,:st,:cou,:s_cou,:s_reg,:s_ar,:lat,:lon,:adv_days,:inside_days,:dist,:promo,:rating,:img,:img_base
+    # insideDays  Max days within tee time bookings are allowed.
+    # Eg 0 = bookings for today are allowed
+    # 1 = bookings allowed for tomorrow, but not today
     alias :name :nm
     alias :country :cou
     alias :state :st

@@ -10,6 +10,10 @@ require_relative "./golf_switch/region_area"
 require_relative "./golf_switch/course"
 require_relative "./golf_switch/course_list_course"
 require_relative "./golf_switch/course_list"
+require_relative "./golf_switch/course_avail_list"
+require_relative "./golf_switch/course_avail_date"
+require_relative "./golf_switch/course_avail_time"
+require_relative "./golf_switch/available_course"
 
 require 'pry'
 module GolfSwitch

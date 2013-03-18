@@ -1,9 +1,10 @@
 module GolfSwitch
   class CourseListCourse < GolfSwitch::Course
-    attr_accessor :rating
     def initialize(attributes={})
       attributes.each do |name, value|
-        send("#{name}=", value)
+        begin
+          send("#{name}=", value)
+        end
       end
     end
     def self.parse_courses(response_hash)

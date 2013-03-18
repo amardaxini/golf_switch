@@ -5,7 +5,9 @@ module GolfSwitch
     attr_accessor :api_response
     def initialize(attributes = {})
       attributes.each do |name, value|
-        send("#{name}=", value)
+        begin
+          send("#{name}=", value)
+        end
       end
       @max_distance_type = "M" unless ["M","K"].include?(@max_distance_type)
       @country_id ||="USA"
