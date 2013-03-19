@@ -9,8 +9,8 @@ GolfSwitch.configure do |config|
   config.access_key="some_access_key"
   config.gs_source=""
 end
-avail_list = GolfSwitch::CourseAvailList.new({:country_id=>"USA",:region_id=>"WI",:play_beg_date=>Date.today.strftime("%Y-%m-%d"),:play_end_date=>Date.today.strftime("%Y-%m-%d")})
-avail_list.commit
-avail_list.parse_response
+area1 = GolfSwitch::CourseInfo.new("14002")
+area1.commit
+area1.parse_response
 binding.pry
-avail_list
+area1
