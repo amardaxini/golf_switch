@@ -22,10 +22,10 @@ module GolfSwitch
       options.merge!("Longitude"=>@longitude) unless @longitude.blank?
       options.merge!("PostalCode"=>@postal_code) unless @postal_code.blank?
       options.merge!("MaxDistance"=>@max_distance) unless @max_distance.blank?
-      options.merge!("MaxDistanceType"=>@max_distance_type) unless !@max_distance.blank? && !@max_distance_type.blank?
+      options.merge!("MaxDistanceType"=>@max_distance_type) if !@max_distance.blank? && !@max_distance_type.blank?
       options.merge!("ShowDisConnected"=>@show_dis_connected) unless @show_dis_connected.blank?
       options.merge!("FeaturedOnly"=>@featured_only) unless @featured_only.blank?
-      options.merge!("Sort",@sort) unless !@sort.blank? && ["N",""].include?(@sort)
+      options.merge!("Sort"=>@sort) if !@sort.blank? && ["N",""].include?(@sort)
       options
     end
 
