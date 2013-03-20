@@ -33,17 +33,14 @@ Or install it yourself as:
 
 
 
-### Area API
+### [Area API](https://devxml.golfswitch.com/examples/definitions.htm#areas)
     # parameter country_id,region_id (optional)
 
       area = GolfSwitch::Area.new({:country_id=>"USA"})
-      area.commit #fire API request
-
-    # API Response
-      area.response
-
-    # Error
-      area.error?
+      area.commit # Fire API request
+      area.response # API RAW Response
+      area.error?  # API Error?
+      area.error_message # API Error message
 
     # return [] or Array of counties with name and it's id
     # each country has array of regions with name and it's id
@@ -62,6 +59,55 @@ Or install it yourself as:
 
     # Region Area
       region.areas
+
+### [Course List API](https://devxml.golfswitch.com/examples/definitions.htm#courselist)
+    # option attributes
+    # country_id,region_id,area,latitude,longitude,postal_code,
+    # max_distance,max_distance_type,show_all_status,show_dis_connected
+    # featured_only,:sort
+
+    option_attributes = {:country_id=>"USA"}
+    course_list = GolfSwitch::CourseList.new(option_attributes)
+    course_list.commit # Fire APi Request
+    course_list.response # API RAW Response
+    course_list.error_message # API Error message
+
+    # return [] or Array of courses with course info
+    course_list.parse_response
+
+     course_list.api_response # parsed response
+
+
+### [Course Avail List API](https://devxml.golfswitch.com/examples/definitions.htm#courseavaillist)
+    # option attributes
+    # country_id,region_id,area,play_beg_date,play_end_date,
+    # time,players,alt_rate_type,promo_code,latitude,
+    #longitude,postal_code,max_distance,max_distance_type,
+    # show_all_times,show_if_no_times....
+
+    option_attributes = {:country_id=>"USA"}
+    course_list = GolfSwitch::CourseAvailList.new(option_attributes)
+    course_list.commit # Fire APi Request
+    course_list.response # API RAW Response
+    course_list.error_message # API Error message
+
+    # return [] or Array of courses with course info
+    # and dates and time with payment details
+
+    course_list.parse_response
+    course_list.api_response # parsed response
+
+### [Course Info API](https://devxml.golfswitch.com/examples/definitions.htm#courseinfo)
+    course_id = "14002"
+    course = GolfSwitch::CourseInfo.new(course_id)
+    course.commit # Fire APi Request
+    course.response # API RAW Response
+    course.error_message # API Error message
+
+    # return course info with hole,images,score card and other detail
+
+    course_list.parse_response
+    course_list.api_response # parsed response
 
 
 
