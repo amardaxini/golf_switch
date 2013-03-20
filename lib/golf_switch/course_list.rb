@@ -15,17 +15,17 @@ module GolfSwitch
 
     def option_attributes
       options = {}
-      options.merge!("CountryId"=>@country_id) if @country_id
-      options.merge!("RegionId"=>@region_id) if @region_id
-      options.merge!("Area"=>@area) if @area
-      options.merge!("Latitude"=>@latitude) if @latitude
-      options.merge!("Longitude"=>@longitude) if @longitude
-      options.merge!("PostalCode"=>@postal_code) if @postal_code
-      options.merge!("MaxDistance"=>@max_distance) if @max_distance
-      options.merge!("MaxDistanceType"=>@max_distance_type) if @max_distance && @max_distance_type
-      options.merge!("ShowDisConnected"=>@show_dis_connected) if @show_dis_connected
-      options.merge!("FeaturedOnly"=>@featured_only) if @featured_only
-      options.merge!("Sort",@sort) if @sort && ["N",""].include?(@sort)
+      options.merge!("CountryId"=>@country_id) unless @country_id.blank?
+      options.merge!("RegionId"=>@region_id) unless @region_id.blank?
+      options.merge!("Area"=>@area) unless @area.blank?
+      options.merge!("Latitude"=>@latitude) unless @latitude.blank?
+      options.merge!("Longitude"=>@longitude) unless @longitude.blank?
+      options.merge!("PostalCode"=>@postal_code) unless @postal_code.blank?
+      options.merge!("MaxDistance"=>@max_distance) unless @max_distance.blank?
+      options.merge!("MaxDistanceType"=>@max_distance_type) unless !@max_distance.blank? && !@max_distance_type.blank?
+      options.merge!("ShowDisConnected"=>@show_dis_connected) unless @show_dis_connected.blank?
+      options.merge!("FeaturedOnly"=>@featured_only) unless @featured_only.blank?
+      options.merge!("Sort",@sort) unless !@sort.blank? && ["N",""].include?(@sort)
       options
     end
 

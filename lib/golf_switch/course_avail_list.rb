@@ -21,33 +21,33 @@ module GolfSwitch
 
     def option_attributes
       options = {}
-      options.merge!("CountryId"=>@country_id) if @country_id
-      options.merge!("RegionId"=>@region_id) if @region_id
-      options.merge!("Area"=>@area) if @area
+      options.merge!("CountryId"=>@country_id) unless @country_id.blank?
+      options.merge!("RegionId"=>@region_id) unless @region_id.blank?
+      options.merge!("Area"=>@area) unless @area.blank?
 
-      options.merge!("PlayBegDate"=>(DateTime.parse(@play_beg_date).strftime("%Y-%m-%dT00:00:00"))) if @play_beg_date
+      options.merge!("PlayBegDate"=>(DateTime.parse(@play_beg_date).strftime("%Y-%m-%dT00:00:00"))) unless @play_beg_date.blank?
 
-      options.merge!("PlayEndDate"=>(DateTime.parse(@play_end_date).strftime("%Y-%m-%dT00:00:00"))) if @play_end_date
+      options.merge!("PlayEndDate"=>(DateTime.parse(@play_end_date).strftime("%Y-%m-%dT00:00:00"))) unless @play_end_date.blank?
 
-      options.merge!("Time"=>@time) if @time
-      options.merge!("Players"=>@players) if @players
-      options.merge!("AltRateType"=>@alt_rate_type) if @alt_rate_type
-      options.merge!("PromoCode"=>@promo_code) if @promo_code
+      options.merge!("Time"=>@time) unless @time.blank?
+      options.merge!("Players"=>@players) unless @players.blank?
+      options.merge!("AltRateType"=>@alt_rate_type) unless @alt_rate_type.blank?
+      options.merge!("PromoCode"=>@promo_code) unless @promo_code.blank?
 
-      options.merge!("Latitude"=>@latitude) if @latitude
-      options.merge!("Longitude"=>@longitude) if @longitude
-      options.merge!("PostalCode"=>@postal_code) if @postal_code
-      options.merge!("MaxDistance"=>@max_distance) if @max_distance
-      options.merge!("MaxDistanceType"=>@max_distance_type) if @max_distance && @max_distance_type
-      options.merge!("FeaturedOnly"=>@featured_only) if @featured_only
+      options.merge!("Latitude"=>@latitude) unless @latitude.blank?
+      options.merge!("Longitude"=>@longitude) unless @longitude.blank?
+      options.merge!("PostalCode"=>@postal_code) unless @postal_code.blank?
+      options.merge!("MaxDistance"=>@max_distance) unless @max_distance.blank?
+      options.merge!("MaxDistanceType"=>@max_distance_type) if !@max_distance.blank? && !@max_distance_type.blank?
+      options.merge!("FeaturedOnly"=>@featured_only) unless @featured_only.blank?
 
-      options.merge!("ShowAllTimes"=>@show_all_times) if @show_all_times
-      options.merge!("ShowIfNoTimes"=>@show_if_no_times) if @show_if_no_times
-      options.merge!("BarterOnly"=>@barter_only) if @barter_only
-      options.merge!("ChargingOnly"=>@charging_only) if @charging_only
-      options.merge!("SpecialsOnly"=>@specials_only) if @specials_only
-      options.merge!("RegularRateOnly"=>@regular_rate_only) if @regular_rate_only
-      options.merge!("ProfileId"=>@profile_id) if @profile_id
+      options.merge!("ShowAllTimes"=>@show_all_times) unless @show_all_times.blank?
+      options.merge!("ShowIfNoTimes"=>@show_if_no_times) unless @show_if_no_times.blank?
+      options.merge!("BarterOnly"=>@barter_only) unless @barter_only.blank?
+      options.merge!("ChargingOnly"=>@charging_only) unless @charging_only.blank?
+      options.merge!("SpecialsOnly"=>@specials_only) unless @specials_only.blank?
+      options.merge!("RegularRateOnly"=>@regular_rate_only) unless @regular_rate_only.blank?
+      options.merge!("ProfileId"=>@profile_id) unless @profile_id.blank?
 
 
       options

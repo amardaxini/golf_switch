@@ -11,12 +11,16 @@
     def get_options
       {
         "Req"=>{
-          "CountryId"=>@country_id,
-          "RegionId"=>@regionId_id
+          option_attributes
         }
       }
     end
-
+    def option_attributes
+      options = {}
+      options.merge!("CountryId"=>@country_id) unless @country_id.blank?
+      options.merge!("RegionId"=>@region_id) unless @region_id.blank?
+      options
+    end
     def commit
       super("areas")
     end
