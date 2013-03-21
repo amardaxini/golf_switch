@@ -8,6 +8,7 @@ module GolfSwitch
       @score_card= []
       @imgs = []
       @img_base = attributes[:img_base]
+      @id = attributes[:id]
       attributes.each do |name, value|
         begin
           if name.to_s=="imgs"
@@ -39,10 +40,10 @@ module GolfSwitch
     def parse_images(imgs)
       if imgs[:img].is_a?(Array)
         imgs[:img].each do |img|
-          @imgs << GolfSwitch::CourseImage.new(img,self.img_base)
+          @imgs << img
         end
       elsif img[:img].is_a?(Hash)
-        @imgs << GolfSwitch::CourseImage.new(imgs[:img],self.img_base)
+        @imgs << imgs[:img]
       end
     end
 
@@ -52,6 +53,23 @@ module GolfSwitch
 
     def self.parse_course(response_hash)
       CourseInfoCourse.new(response_hash[:course].merge(:img_base=>response_hash[:img_base]))
+    end
+
+    def images(protocol="https")
+      images = []
+      self.imgs.each do |img|
+        images << build_url(img,protocol)
+      end
+      images
+    end
+
+    protected
+    def build_url(img,protocol="https")
+      if img
+        "#{protocol}://#{self.img_base.to_s}/#{self.id}/#{img.to_s}"
+      else
+         ""
+      end
     end
 
   end
