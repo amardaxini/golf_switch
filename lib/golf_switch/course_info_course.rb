@@ -7,7 +7,7 @@ module GolfSwitch
     def initialize(attributes={})
       @score_card= []
       @imgs = []
-    binding.pry
+      @img_base = attributes[:img_base]
       attributes.each do |name, value|
         begin
           if name.to_s=="imgs"

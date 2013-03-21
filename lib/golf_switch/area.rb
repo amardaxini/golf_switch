@@ -1,6 +1,6 @@
  module GolfSwitch
   class Area < GolfSwitch::Request
-    attr_accessor :country_id,:region_id,:api_response
+    attr_accessor :course_id,:region_id,:api_response
     def initialize(attributes = {})
       attributes.each do |name, value|
         send("#{name}=", value)
