@@ -7,8 +7,6 @@ module GolfSwitch
     def initialize(attributes={})
       @score_card= []
       @imgs = []
-      @img_base = attributes[:img_base]
-      @id = attributes[:id]
       attributes.each do |name, value|
         begin
           if name.to_s=="imgs"
@@ -24,8 +22,18 @@ module GolfSwitch
           puts "Add #{name} as accessor in Corse Info Course"
         end
       end
+      set_course_image
 
     end
+    def set_course_image
+      unless @imgs.grep(/overview/).blank?
+        @img = @imgs.grep(/overview/).first
+      else
+        @img = @imgs[0]
+      end
+
+    end
+
     def parse_score_card(yardages)
       if yardages[:yardage].is_a?(Array)
         yardages[:yardage].each do |yard_age|
