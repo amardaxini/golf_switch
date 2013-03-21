@@ -19,7 +19,6 @@ require_relative "./golf_switch/course_avail_time"
 require_relative "./golf_switch/available_course"
 require_relative "./golf_switch/course_info"
 require_relative "./golf_switch/course_info_course"
-require_relative "./golf_switch/course_image"
 require_relative "./golf_switch/course_policy"
 require_relative "./golf_switch/score_card"
 
