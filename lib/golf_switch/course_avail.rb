@@ -2,7 +2,7 @@ module GolfSwitch
   class CourseAvail < GolfSwitch::Request
     attr_accessor :course_id,:play_beg_date,:play_end_date,:time,:players,:alt_rate_type,:promo_code
     attr_accessor :member_no,:member_no2,:member_no3,:member_no4
-    attr_accessor :show_all_times,:barter_only,:charging_only,:specials_only,:regular_rate_only,:profile_id
+    attr_accessor :show_all_times,:barter_only,:charging_only,:specials_only,:regular_rate_only,:profile_id,:api_response
 
     def initialize(attributes = {})
       attributes.each do |name, value|
@@ -34,6 +34,37 @@ module GolfSwitch
       options.merge!("SpecialsOnly"=>@specials_only) unless @specials_only.blank?
       options.merge!("RegularRateOnly"=>@regular_rate_only) unless @regular_rate_only.blank?
       options.merge!("ProfileId"=>@profile_id) unless @profile_id.blank?
+      options
+    end
+
+    def commit
+      super("course_avail")
+    end
+
+    def get_options
+      {
+        "Req"=>{
+          "CourseAvailRequest"=>option_attributes
+        }
+
+      }
+    end
+
+    def parse_error
+      @response[:course_avail_response][:course_avail_result]
+    end
+
+    def parse_response
+      begin
+        unless error?
+          binding.pry
+          @api_response = AvailableCourse.parse_courses(@response[:course_avail_response][:course_avail_result])
+        else
+          puts "Error #{error_message}"
+        end
+      rescue
+
+      end
     end
   end
 end

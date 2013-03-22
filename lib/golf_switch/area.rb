@@ -39,7 +39,7 @@
           puts "Error #{error_message}"
         end
       rescue
-
+        puts "Parse Error On Area"
       end
     end
 
