@@ -57,7 +57,6 @@ module GolfSwitch
     def parse_response
       begin
         unless error?
-          binding.pry
           @api_response = AvailableCourse.parse_courses(@response[:course_avail_response][:course_avail_result])
         else
           puts "Error #{error_message}"
