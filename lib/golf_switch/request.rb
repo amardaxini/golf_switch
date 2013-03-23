@@ -1,9 +1,9 @@
 
 module GolfSwitch
   class Request
-    attr_accessor :client,:config,:response,:request
+    attr_accessor :client,:config,:response,:request,:soap_error
     def commit(method_name)
-
+      @soap_error = false
       @config =GolfSwitch.configuration
       @client = Savon.client({:wsdl=>"https://devxml.golfswitch.com/golfservice.asmx?WSDL"})
       # Available Operations
@@ -15,8 +15,10 @@ module GolfSwitch
         end
       rescue Savon::SOAP::Fault => fault
         @request = fault
+        @soap_error= true
       rescue Savon::Error => error
         @request = error
+        @soap_error= true
       end
       @response = @request.body
 
@@ -39,15 +41,17 @@ module GolfSwitch
         }
       }
     end
-    def soap_fault?
-      @response.is_a?(Savon::SOAP::Fault)
-    end
+
     def error?
-      parse_error[:ret_cd].to_i != 0  || soap_fault?
+      parse_error[:ret_cd].to_i != 0  || @soap_error
     end
 
     def error_message
-      parse_error[:ret_msg]
+      if @soap_error
+        @request
+      else
+        parse_error[:ret_msg]
+      end
     end
 
   end
