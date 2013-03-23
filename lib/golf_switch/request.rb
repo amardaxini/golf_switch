@@ -9,8 +9,14 @@ module GolfSwitch
       # Available Operations
 #     [:areas,:course_list,:course_info,:course_avail_list,:course_avail,:book_golf,
 #      :get_golf_booking,:cancel_golf, :get_alt_rate_types,:get_course_policies]
-      @request = @client.call(method_name.to_sym) do
-        message  get_authentication_header.merge(get_options)
+      begin
+        @request = @client.call(method_name.to_sym) do
+          message  get_authentication_header.merge(get_options)
+        end
+      rescue Savon::SOAP::Fault => fault
+        @request = fault
+      rescue Savon::Error => error
+        @request = error
       end
       @response = @request.body
 
@@ -37,7 +43,7 @@ module GolfSwitch
       @response.is_a?(Savon::SOAP::Fault)
     end
     def error?
-      parse_error[:ret_cd].to_i != 0
+      parse_error[:ret_cd].to_i != 0  || soap_fault?
     end
 
     def error_message

@@ -51,7 +51,11 @@ module GolfSwitch
     end
 
     def parse_error
-      @response[:course_avail_response][:course_avail_result]
+      begin
+        @response[:course_avail_response][:course_avail_result]
+      rescue
+        "Error on Parsing error messsage"
+      end
     end
 
     def parse_response
