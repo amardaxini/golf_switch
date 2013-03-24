@@ -50,7 +50,7 @@ module GolfSwitch
         imgs[:img].each do |img|
           @imgs << img
         end
-      elsif img[:img].is_a?(Hash)
+      elsif imgs[:img].is_a?(String)
         @imgs << imgs[:img]
       end
     end
