@@ -3,10 +3,14 @@ module GolfSwitch
     attr_accessor :from_price,:to_price,:curr,:note,:short_promo,:rating_cnt,:max_reward_points,:addr1,:zip
     attr_accessor :cc_allow,:allow_players,:year_built,:holes,:designer,:greens,:imgs,:services
     attr_accessor :has_net_rates,:has_trade,:cxl_policy,:payment_terms,:score_card,:dress_code
+    attr_accessor :yard_ages,:pars,:handicaps
 
     def initialize(attributes={})
-      @score_card= []
+      @yard_ages= []
+      @pars = []
+      @handicaps = []
       @imgs = []
+      binding.pry
       attributes.each do |name, value|
         begin
           if name.to_s=="imgs"
@@ -14,7 +18,9 @@ module GolfSwitch
           elsif  name.to_s =="cxl_policy"
             @cxl_policy = GolfSwitch::CoursePolicy.new(value)
           elsif name.to_s == "score_card"
-            parse_score_card(value[:yardages])
+            @yard_ages = parse_score_card((value[:yardages][:yardage] rescue nil))
+            @pars = parse_score_card((value[:pars][:par] rescue nil))
+            @handicaps  =parse_score_card((value[:handicaps][:handicap] rescue nil))
           else
             send("#{name}=", value)
           end
@@ -34,15 +40,16 @@ module GolfSwitch
 
     end
 
-    def parse_score_card(yardages)
-      if yardages[:yardage].is_a?(Array)
-        yardages[:yardage].each do |yard_age|
-          score_card << GolfSwitch::ScoreCard.new(yard_age)
+    def parse_score_card(scores)
+      score_card =[]
+      if scores.is_a?(Array)
+        scores.each do |score|
+          score_card << GolfSwitch::ScoreCard.new(score)
         end
-      elsif yardages[:yardage].is_a?(Hash)
-        score_card << GolfSwitch::ScoreCard.new(yardages[:yardage])
+      elsif scores.is_a?(Hash)
+        score_card << GolfSwitch::ScoreCard.new(scores)
       end
-
+      score_card
     end
 
     def parse_images(imgs)

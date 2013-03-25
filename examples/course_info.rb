@@ -9,7 +9,7 @@ GolfSwitch.configure do |config|
   config.access_key="some_access_key"
   config.gs_source=""
 end
-area1 = GolfSwitch::CourseInfo.new("18776")
+area1 = GolfSwitch::CourseInfo.new("14002")
 area1.commit
 area1.parse_response
 binding.pry
