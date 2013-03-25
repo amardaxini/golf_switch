@@ -10,7 +10,6 @@ module GolfSwitch
       @pars = []
       @handicaps = []
       @imgs = []
-      binding.pry
       attributes.each do |name, value|
         begin
           if name.to_s=="imgs"
