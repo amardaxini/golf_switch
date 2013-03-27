@@ -23,6 +23,11 @@ require_relative "./golf_switch/course_policy"
 require_relative "./golf_switch/score_card"
 require_relative "./golf_switch/course_avail"
 require_relative "./golf_switch/course_avail_request"
+require_relative "./golf_switch/book_golf"
+require_relative "./golf_switch/book_golf_item"
+require_relative "./golf_switch/payment"
+require_relative "./golf_switch/player"
+require_relative "./golf_switch/golf_book"
 
 
 
