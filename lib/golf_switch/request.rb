@@ -13,12 +13,16 @@ module GolfSwitch
         @request = @client.call(method_name.to_sym) do
           message  get_authentication_header.merge(get_options)
         end
-      rescue Savon::SOAP::Fault => fault
-        @request = fault
+
+      rescue Savon::SOAPFault => error
+
+        @request = error.to_hash
         @soap_error= true
       rescue Savon::Error => error
-        @request = error
+        @request = error.to_hash
         @soap_error= true
+      rescue Savon::InvalidResponseError
+        Logger.log "Invalid server response"
       end
       @response = @request.body
 

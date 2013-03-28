@@ -6,7 +6,7 @@ module GolfSwitch
     attr_accessor :curr_charged,:tot_voucher_charged,:tot_non_refundable,:tot_golf_pass_rounds
     attr_accessor :img,:cxl_policy
 
-    def initialize(attibutes={})
+    def initialize(attributes={})
       attributes.each do |name, value|
         begin
           if name.to_s=="cxl_policy"
@@ -22,15 +22,15 @@ module GolfSwitch
 
     def self.parse_golf_books(response)
       golf_books = []
-      if response[:golf_books].is_a?(Array)
-        response[:golf_books].each do |golf_book|
-          golf_books << GolfSwitch::GolfBook.new(response[:golf_books])
+      if response[:golf_books] && response[:golf_books][:golf_book].is_a?(Array)
+        response[:golf_books][:golf_book].each do |golf_book|
+          golf_books << GolfSwitch::GolfBook.new(response[:golf_books][:golf_book])
         end
-      elsif response[:golf_books].is_a?(hash)
-        golf_books << GolfSwitch::GolfBook.new(response[:golf_books])
+      elsif response[:golf_books] && response[:golf_books][:golf_book].is_a?(Hash)
+        golf_books << GolfSwitch::GolfBook.new(response[:golf_books][:golf_book])
       end
       golf_books
-
     end
+
   end
 end

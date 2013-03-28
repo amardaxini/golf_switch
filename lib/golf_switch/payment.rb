@@ -5,12 +5,21 @@ module GolfSwitch
     attr_accessor :pay_type,:cc_type,:pay_number,:cc_exp_mo,:cc_exp_yr,:cc_cvv
     attr_accessor :cc_name,:cc_address1,:cc_city,:cc_state,:cc_country,:cc_postal_code,:cc_email
     attr_accessor :cc_phone,:pay_amount,:pay_curr
+    def initialize(attributes={})
+      attributes.each do |name, value|
+        begin
+          send("#{name}=", value)
+        rescue
+          puts "invalid attribute #{name} in payment"
+        end
+      end
+    end
 
     def option_attributes
       options = {}
       options.merge!("PayType"=>@pay_type || "CC")
-      options.merge!("PayType"=>@cc_type|| "VI")
-      options.merge!("PayNumber"=>@pay_number|| "VI")
+      options.merge!("CcType"=>@cc_type|| "VI")
+      options.merge!("PayNumber"=>@pay_number)
       options.merge!("CcExpMo"=>@cc_exp_mo)
       options.merge!("CcExpYr"=>@cc_exp_yr)
       options.merge!("CcCVV"=>@cc_cvv) unless @cc_cvv.blank?

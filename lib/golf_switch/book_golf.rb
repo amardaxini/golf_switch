@@ -1,7 +1,7 @@
 module GolfSwitch
-  class BookGolf < GolfSwitch::Request
+  class BookGolf <  GolfSwitch::Request
     attr_accessor :book_golf_items,:api_response
-    def initialize
+    def initialize(attributes={})
       @book_golf_items = []
     end
 
@@ -13,7 +13,7 @@ module GolfSwitch
     end
     def option_attributes
       {
-        "BookGolfItems"=>{"BookGolfItem"=>@book_golf_items.collect{|bgi| bgi.option_attributes}}
+        "BookGolfItems"=>{"BookGolfItem"=>Array(@book_golf_items).collect{|bgi| bgi.option_attributes}}
       }
     end
 

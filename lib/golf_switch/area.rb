@@ -3,7 +3,12 @@
     attr_accessor :country_id,:region_id,:api_response
     def initialize(attributes = {})
       attributes.each do |name, value|
-        send("#{name}=", value)
+        begin
+          send("#{name}=", value)
+        rescue
+          puts "invalid attribute #{name} in area"
+        end
+
       end
       @area_response = []
     end
