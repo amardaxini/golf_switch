@@ -43,7 +43,7 @@ payment = GolfSwitch::Payment.new(payment_attributes)
 
 book_golf_item_attributes= {
   :course_id=>"14002",
-  :play_date=>"2013-03-30",
+  :play_date=>"2013-04-05",
   :play_time=>"0725",
   :num_players=>"4",
   :pp_price=>"100.00",
@@ -70,4 +70,5 @@ book_golf = GolfSwitch::BookGolf.new()
 book_golf.book_golf_items << book_golf_item
 #
 book_golf.commit
+binding.pry
 book_golf.parse_response

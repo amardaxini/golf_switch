@@ -28,6 +28,10 @@ require_relative "./golf_switch/book_golf_item"
 require_relative "./golf_switch/payment"
 require_relative "./golf_switch/player"
 require_relative "./golf_switch/golf_book"
+require_relative "./golf_switch/get_course_policy"
+require_relative "./golf_switch/course_policy_response"
+require_relative "./golf_switch/course_policy"
+require_relative "./golf_switch/get_alt_rate_type"
 
 
 

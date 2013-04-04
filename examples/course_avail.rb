@@ -9,7 +9,9 @@ GolfSwitch.configure do |config|
   config.access_key="some_access_key"
   config.gs_source=""
 end
-avail_list = GolfSwitch::CourseAvail.new({:course_id=>"14002",:play_beg_date=>Date.today.strftime("%Y-%m-%d"),:play_end_date=>Date.today.strftime("%Y-%m-%d")})
+time = DateTime.now
+date = Date.new(time.year, time.mon, time.day+1).strftime("%Y-%m-%d")
+avail_list = GolfSwitch::CourseAvail.new({:course_id=>"14003",:play_beg_date=>date,:play_end_date=>date})
 avail_list.commit
 avail_list.parse_response
 binding.pry

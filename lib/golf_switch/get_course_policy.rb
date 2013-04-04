@@ -1,6 +1,6 @@
 module GolfSwitch
   class GetCoursePolicy < GolfSwitch::Request
-    attr_accessor :course_id,:play_date,:alt_rate_type,:api_Response
+    attr_accessor :course_id,:play_date,:alt_rate_type,:api_response
 
     def initialize(attributes={})
       attributes.each do |name, value|
@@ -11,7 +11,13 @@ module GolfSwitch
         end
       end
     end
+     def get_options
+      {
+        "Req"=>
+          option_attributes
 
+      }
+    end
     def option_attributes
        options = {}
       options.merge!("CourseId"=>@course_id) unless @course_id.blank?
