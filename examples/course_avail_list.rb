@@ -8,7 +8,10 @@ GolfSwitch.configure do |config|
   config.user_session_id="some_session"
   config.access_key="some_access_key"
   config.gs_source=""
+
 end
+# GolfSwitch.configuration.golf_switch_wsdl = "https://xml.golfswitch.com/golfService.asmx?WSDL"
+binding.pry
 avail_list = GolfSwitch::CourseAvailList.new({:country_id=>"USA",:region_id=>"CA",:play_beg_date=>Date.today.strftime("%Y-%m-%d"),:play_end_date=>Date.today.strftime("%Y-%m-%d"),:show_all_times=>true,:time=>"1009"})
 avail_list.commit
 avail_list.parse_response

@@ -5,8 +5,15 @@ module GolfSwitch
       @reseller_id,@partner_id,@source_cd,@lang,@user_ip,@user_session_id,@access_key,@gs_source,@agent=nil
       @gs_debug= true
       @mode = mode
-      @golf_switch_wsdl ="https://devxml.golfswitch.com/golfservice.asmx?WSDL" if @mode=="development"
-      @golf_switch_wsdl ="https://xml.golfswitch.com/golfService.asmx?WSDL" if @mode=="production"
+      get_golf_switch_wsdl
+    end
+
+    def get_golf_switch_wsdl
+      if @mode=="development"
+        @golf_switch_wsdl "https://devxml.golfswitch.com/golfservice.asmx?WSDL"
+      elsif @mode=="production"
+        @golf_switch_wsdl"https://xml.golfswitch.com/golfService.asmx?WSDL"
+      end
 
     end
   end
