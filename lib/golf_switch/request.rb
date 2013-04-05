@@ -5,7 +5,7 @@ module GolfSwitch
     def commit(method_name)
       @soap_error = false
       @config =GolfSwitch.configuration
-      @client = Savon.client({:wsdl=>"https://devxml.golfswitch.com/golfservice.asmx?WSDL"})
+      @client = Savon.client({:wsdl=>@config.golf_switch_wsdl})
       # Available Operations
 #     [:areas,:course_list,:course_info,:course_avail_list,:course_avail,:book_golf,
 #      :get_golf_booking,:cancel_golf, :get_alt_rate_types,:get_course_policies]
