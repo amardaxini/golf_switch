@@ -80,7 +80,7 @@ module GolfSwitch
     protected
     def build_url(img,protocol="https")
       if img
-        "#{protocol}://#{self.img_base.to_s}/#{self.id}/#{img.to_s}"
+        "#{protocol}://#{self.img_base.to_s}/#{self.id}/#{img.to_s}".gsub("\/\/",'/')
       else
          ""
       end

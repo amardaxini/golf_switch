@@ -10,9 +10,9 @@ module GolfSwitch
 
     def get_golf_switch_wsdl
       if @mode=="development"
-        @golf_switch_wsdl "https://devxml.golfswitch.com/golfservice.asmx?WSDL"
+        @golf_switch_wsdl = "https://devxml.golfswitch.com/golfservice.asmx?WSDL"
       elsif @mode=="production"
-        @golf_switch_wsdl"https://xml.golfswitch.com/golfService.asmx?WSDL"
+        @golf_switch_wsdl="https://xml.golfswitch.com/golfService.asmx?WSDL"
       end
 
     end
