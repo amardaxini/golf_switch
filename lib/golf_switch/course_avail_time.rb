@@ -19,7 +19,11 @@ module GolfSwitch
     end
 
     def max_player
-      @allow.split("").count{|p| p=='Y'}
+      begin
+        @allow.split("").rindex("Y")+1
+      rescue
+        no_of_allowed_player
+      end
     end
 
   end
