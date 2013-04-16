@@ -16,7 +16,7 @@ module GolfSwitch
 
     def min_player
       min_index = @allow.split("").index("N")
-      min_index.blank? ? 1 : min_index+1
+      min_index.blank? ? 1 : min_index+2
     end
 
     def max_player
