@@ -14,5 +14,13 @@ module GolfSwitch
       @allow.split("").count{|p| p=='Y'}
     end
 
+    def min_player
+      @allow.split("").index("N").to_i+1
+    end
+
+    def max_player
+      @allow.split("").count{|p| p=='Y'}
+    end
+
   end
 end
