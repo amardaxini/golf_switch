@@ -32,6 +32,9 @@ require_relative "./golf_switch/get_course_policy"
 require_relative "./golf_switch/course_policy_response"
 require_relative "./golf_switch/course_policy"
 require_relative "./golf_switch/get_alt_rate_type"
+require_relative "./golf_switch/golf_book_info"
+require_relative "./golf_switch/cancel_golf"
+require_relative "./golf_switch/cancel_golf_response"
 
 
 

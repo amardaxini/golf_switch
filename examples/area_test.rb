@@ -9,7 +9,8 @@ GolfSwitch.configure do |config|
   config.access_key="some_access_key"
   config.gs_source=""
 end
-area1 = GolfSwitch::Area.new({:country_id=>"USA"})
+area1 = GolfSwitch::Area.new({:country_id=>"USA",:region_id=>"IL"})
 area1.commit
 area1.parse_response
 area1
+binding.pry
