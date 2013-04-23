@@ -70,5 +70,5 @@ book_golf = GolfSwitch::BookGolf.new()
 book_golf.book_golf_items << book_golf_item
 #
 book_golf.commit
-binding.pry
 book_golf.parse_response
+book_golf.api_response

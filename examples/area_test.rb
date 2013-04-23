@@ -12,5 +12,4 @@ end
 area1 = GolfSwitch::Area.new({:country_id=>"USA",:region_id=>"IL"})
 area1.commit
 area1.parse_response
-area1
-binding.pry
+area1.api_response

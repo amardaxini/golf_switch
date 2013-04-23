@@ -73,7 +73,6 @@ book_golf.commit
 
 book_golf.parse_response
 res = book_golf.api_response[0]
-binding.pry
 cancel_book = GolfSwitch::CancelGolf.new("14002","2013-04-20",res.confirmation_no,res.booking_id)
 cancel_book.commit
 cancel_book.parse_response

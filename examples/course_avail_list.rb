@@ -11,7 +11,7 @@ GolfSwitch.configure do |config|
 
 end
 # GolfSwitch.configuration.golf_switch_wsdl = "https://xml.golfswitch.com/golfService.asmx?WSDL"
-binding.pry
+
 avail_list = GolfSwitch::CourseAvailList.new({:country_id=>"USA",:region_id=>"CO",:play_beg_date=>Date.today.strftime("%Y-%m-%d"),:play_end_date=>Date.today.strftime("%Y-%m-%d"),:time=>"1009",:barter_only=>true})
 avail_list.commit
 avail_list.parse_response
@@ -30,5 +30,4 @@ avail_list2.api_response
 hot_deals  = GolfSwitch::CourseAvailList.new({:country_id=>"USA",:region_id=>"CA",:play_beg_date=>Date.today.strftime("%Y-%m-%d"),:play_end_date=>Date.today.strftime("%Y-%m-%d"),:show_all_times=>true,:time=>"1009",:barter_only=>true})
 hot_deals.commit
 hot_deals.parse_response
-binding.pry
-avail_list
+hot_deals.api_response

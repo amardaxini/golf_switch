@@ -12,5 +12,4 @@ end
 course_list = GolfSwitch::CourseList.new({:country_id=>"USA",:region_id=>"WI",:area=>"Northern Wisconsin"})
 course_list.commit
 course_list.parse_response
-binding.pry
-course_list
+course_list.api_response

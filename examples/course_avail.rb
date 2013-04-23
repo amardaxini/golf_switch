@@ -14,7 +14,6 @@ date = Date.new(time.year, time.mon, time.day+1).strftime("%Y-%m-%d")
 avail_list = GolfSwitch::CourseAvail.new({:course_id=>"14003",:play_beg_date=>date,:play_end_date=>date})
 avail_list.commit
 avail_list.parse_response
-binding.pry
 avail_list
 # avail_lists = GolfSwitch::CourseAvailRequest.new()
 # avail_list1 = GolfSwitch::CourseAvail.new({:course_id=>"14003",:play_beg_date=>Date.today.strftime("%Y-%m-%d"),:play_end_date=>Date.today.strftime("%Y-%m-%d")})

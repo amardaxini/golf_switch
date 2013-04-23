@@ -12,4 +12,4 @@ end
 course_policy = GolfSwitch::GetCoursePolicy.new({:course_id=>14002,:play_date=>Date.today.strftime("%Y-%m-%d")})
 course_policy.commit
 course_policy.parse_response
-binding.pry
+course_policy.api_response
